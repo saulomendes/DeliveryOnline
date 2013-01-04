@@ -1,7 +1,7 @@
 package br.com.deliveryonline.dmp;
 
 public class Conta {
-
+	
 	private int id;
 	private String nome;
 	private String sobreNome;
