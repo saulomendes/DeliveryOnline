@@ -1,21 +1,32 @@
 package br.com.deliveryonline.dmp;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Categoria {
 
-	private int id;
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
 	private String descricao;
 	
-	public Categoria(int id, String descricao) {
+	public Categoria() {
+		
+	}
+	
+	public Categoria(Long id, String descricao) {
 		super();
 		this.id = id;
 		this.descricao = descricao;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
