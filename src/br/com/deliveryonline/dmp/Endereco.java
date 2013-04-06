@@ -9,6 +9,11 @@ public class Endereco {
 	private String cep;
 	private String cidade;
 	private String uf;
+	
+	public Endereco() {
+		
+	}
+	
 	public Endereco(int id, String endereco, String numero, String bairro,	String cep, String cidade, String uf) {
 		super();
 		this.id = id;
@@ -19,6 +24,7 @@ public class Endereco {
 		this.cidade = cidade;
 		this.uf = uf;
 	}
+	
 	public int getId() {
 		return id;
 	}

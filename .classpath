@@ -9,5 +9,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JPA"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MYSQL"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Primefaces 3.5"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

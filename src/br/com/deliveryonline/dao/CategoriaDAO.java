@@ -1,39 +1,47 @@
 package br.com.deliveryonline.dao;
 
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
+import java.util.List;
+
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import br.com.deliveryonline.dmp.Categoria;
 
-@ManagedBean(name="beanCategoria")
-@ApplicationScoped
-public class CategoriaDAO {
+public class CategoriaDAO extends DAO {
 
-	private Categoria categoria = new Categoria();
-	
 	public CategoriaDAO() {
 		
 	}
 	
-	public void save() {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("delivery");
-		EntityManager em = emf.createEntityManager();
+	public void save(Categoria cat) {
+		EntityManager em = getEntityManager();
 		em.getTransaction().begin();
-		em.persist(categoria);
+		em.persist(cat);
 		em.getTransaction().commit();
 		em.close();
-		emf.close();
+	}
+	
+	public void remove(Categoria cat) {
+		EntityManager em = getEntityManager();
+		em.getTransaction().begin();
+		em.remove(cat);
+		em.getTransaction().commit();
+		em.close();
+		
 	}
 
-	public Categoria getCategoria() {
-		return categoria;
+	public void update(Categoria cat) {
+		EntityManager em = getEntityManager();
+		em.getTransaction().begin();
+		em.merge(cat);
+		em.getTransaction().commit();
+		em.close();
 	}
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
+	
+	public List<Categoria> listAll() {
+		EntityManager em = getEntityManager();
+		Query q = em.createNamedQuery(Categoria.QUERY_LISTAR_TODOS, Categoria.class);
+		return q.getResultList();
 	}
 	
 }

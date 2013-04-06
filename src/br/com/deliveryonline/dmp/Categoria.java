@@ -4,29 +4,35 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Transient;
 
 @Entity
+@NamedQuery(name=Categoria.QUERY_LISTAR_TODOS, query="select c from Categoria c")
 public class Categoria {
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	@Transient
+	public static final String QUERY_LISTAR_TODOS = "listarTodos";
+	
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
 	private String descricao;
 	
 	public Categoria() {
 		
 	}
 	
-	public Categoria(Long id, String descricao) {
+	public Categoria(int id, String descricao) {
 		super();
 		this.id = id;
 		this.descricao = descricao;
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head></h:head> 
+<h:body> 
+	<h:form id="formPrincipal">
+		<p:dataTable id="tabelaCategoria" value="#{beanCategoria.categoriaList}" var="cat" paginator="true">
+			<p:column headerText="Descrição">  
+				<h:outputText value="#{cat.descricao}" />  
+			</p:column>  
+			<f:facet name="footer">
+				<p:commandButton id="viewButton" value="Nova Categoria" icon="ui-icon-search"
+    	                         update=":formPrincipal:display" oncomplete="productDialog.show()"/>	
+            </f:facet>
+		</p:dataTable>
+	
+		<p:dialog id="dialog" header="Produto selecionado" widgetVar="productDialog" resizable="false"
+                  width="400" showEffect="clip" hideEffect="fold">
+                      
+			<h:panelGrid id="display" columns="2">
+				<h:outputLabel value="Descrição" /><h:inputText value="#{beanCategoria.categoria.descricao}"/>
+			</h:panelGrid>
+			
+			<h:commandButton action="#{beanCategoria.save}" value="Cadastrar" />
+		</p:dialog>
+	</h:form>
+</h:body> 
+</html>
